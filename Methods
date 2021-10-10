@@ -1,3 +1,26 @@
 //A method is a code block that contains a series of statements.
 //A program causes the statements to be executedby calling the method and specifying any required method arguments.
 //The code written in a method can be used any number of times.
+public class ExampleMaxNumber
+{
+public static void main(String[] args)
+{
+int a = 15;
+int b = 10;
+ExampleMaxNumber e=new ExampleMaxNumber();
+int c = e.maxfunction(a,b);
+System.out.println("Maximum Value = " + c);
+}
+/** returns the maximum of two numbers */)
+public int minFunction(int n1, int n2){
+int max;
+if(n1>=n2)
+{
+max=n1;
+}
+else
+{
+   max=n2;
+}
+return max;
+}
