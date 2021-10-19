@@ -1,0 +1,95 @@
+In Java, an interface is a blueprint or template of a class.
+It is much similar to the Java class but the only difference is that it has abstract methods and static constants.
+There can be only abstract methods in an interface, that is there is no method body inside these abstract methods. 
+The class that implements the interface should be abstract, otherwise, we need to define all the methods of the interface in the class.
+Interfaces are one of the core concepts of Java programming which are majorly used in Java design patterns.
+
+
+An interface provides specifications of what a class should do or not and how it should do. An interface in Java basically has a set of methods that class may or may not apply.
+It also has capabilities to perform a function. The methods in interfaces do not contain any body.
+These abstract methods are implemented by classes before accessing them.
+An interface in Java is a mechanism which we mainly use to achieve abstraction and multiple inheritances in Java.
+An interface provides a set of specifications that other classes must implement.
+We can implement multiple Java Interfaces by a Java class. All methods of an interface are implicitly public and abstract. The word abstract means these methods have no method body, only method signature.
+Java Interface also represents the IS-A relationship of inheritance between two classes.
+An interface can inherit or extend multiple interfaces.
+We can implement more than one interface in our class.
+Since Java 8, we can have static and default methods in an interface.
+Since Java 9, we can also include private methods in an interface.
+Syntax of declaring Interfaces in Java:
+
+To declare an interface, the interface keyword is used. Here is a syntax to declare an interface:
+
+interface interface-name
+{
+  //abstract methods
+}
+Example:
+
+Following is an example of an interface:
+
+//Filename: NameOfInterface.java
+                    import java.lang.*;
+                    // Any number of import statements
+                    interface NameOfInterface
+                    {
+                           // Any number of final, static fields
+                           // Any number of abstract method declarations
+                    }
+Example:
+
+//Filename : shape.java
+
+interface shape
+{
+   public void colour();
+   public void lines();
+}
+Properties of a Java Interface
+An Interface has the following properties −
+
+An interface is implicitly abstract. While declaring an interface, you do not need to use the keyword abstract.
+Each method of an interface is also implicitly abstract, so we need not use the abstract keyword while declaring methods inside an interface.
+Each method in an interface is implicitly public.
+All variables defined in an interface are public, static, and final. In other words, interfaces can declare only constants, not instance variables.
+How to declare an interface?
+An interface is declared by using the interface keyword. It provides total abstraction; means all the methods in an interface are declared with the empty body, and all the fields are public, static and final by default. A class that implements an interface must implement all the methods declared in the interface.
+
+Syntax:
+interface <interface_name>{  
+      
+    // declare constant fields  
+    // declare methods that abstract   
+    // by default.  
+}  
+
+Extending Interfaces
+As a class can extend another class, similarly an interface can extend another interface. The extends keyword is used to extend or inherit an interface. The derived interface inherits the methods of the parent interface.
+
+The following Person interface is extended by Student and Teacher interfaces.
+
+// Filename: Person.java
+public interface Person
+{
+       public void setName(String name);
+       public void setAge(int age);
+}
+// Filename: Student.java
+public interface Student extends Person
+{
+       public void marks(int marks);
+       public void getEnrollmentNumber(int roll);
+       public void yearOfPassing(int year);
+}
+// Filename: Teacher.java
+public interface Teacher extends Person
+{
+       public void teacherId(int id);
+       public void salary(int salary);
+       public void assignedClasses(int number);
+       public void subject(String subject);
+}
+The Teacher interface has four methods, but it inherits two from the Person interface; thus, a class that implements the Teacher interface needs to implement all the six methods. 
+Similarly, a class that implements the Student interface needs to define the three methods from Student and the two methods from Person.
+
+
