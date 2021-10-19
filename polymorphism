@@ -1,0 +1,506 @@
+The derivation of the word Polymorphism is from two different Greek words- poly and morphs. 
+“Poly” means numerous, and “Morphs” means forms. 
+So polymorphism means innumerable forms.
+Polymorphism is one of the most significant features of Object-Oriented Programming.
+A superclass named “Shapes” has a method “area()”. 
+Subclasses of “Shapes” can be “Triangle”, “circle”, “Rectangle”, etc.
+Each subclass has its way of calculating area. 
+Using Inheritance and Polymorphism, the subclasses can use the “area()” method to find the area’s formula for that shape
+class Shapes {
+  public void area() {
+    System.out.println("The formula for area of ");
+  }
+}
+class Triangle extends Shapes {
+  public void area() {
+    System.out.println("Triangle is ½ * base * height ");
+  }
+}
+class Circle extends Shapes {
+  public void area() {
+    System.out.println("Circle is 3.14 * radius * radius ");
+  }
+}
+class Main {
+  public static void main(String[] args) {
+    Shapes myShape = new Shapes();  // Create a Shapes object
+    Shapes myTriangle = new Triangle();  // Create a Triangle object
+    Shapes myCircle = new Circle();  // Create a Circle object
+    myShape.area();
+    myTriangle.area();
+    myShape.area();
+    myCircle.area();
+  }
+}
+Output:
+The formula for the area of Triangle is ½ * base * height
+The formula for the area of the Circle is 3.14 * radius * radius
+
+Types of Polymorphism
+Polymorphism in Java can be performed by two different methods:
+
+1)Method Overloading
+2)Method Overriding
+What is Method Overloading in Java?
+Method overloading is defined as a process that can create multiple methods of the same name in the same class, and all the methods work in different ways. 
+Method overloading occurs when there is more than one method of the same name in the class.
+Example of Method Overloading in Java:
+class Shapes {
+  public void area() {
+    System.out.println("Find area ");
+  }
+public void area(int r) {
+    System.out.println("Circle area = "+3.14*r*r);
+  }
+ 
+public void area(double b, double h) {
+    System.out.println("Triangle area="+0.5*b*h);
+  }
+public void area(int l, int b) {
+    System.out.println("Rectangle area="+l*b);
+  }
+ 
+ 
+}
+ 
+class Main {
+  public static void main(String[] args) {
+    Shapes myShape = new Shapes();  // Create a Shapes object
+     
+    myShape.area();
+    myShape.area(5);
+    myShape.area(6.0,1.2);
+    myShape.area(6,2);
+     
+  }
+}
+Output:
+
+Find area
+Circle area = 78.5
+Triangle area=3.60
+Rectangle area=12
+
+
+Polymorphism in java can be classified into two types:
+
+1)Static / Compile-Time Polymorphism
+2)Dynamic / Runtime Polymorphism
+Compile-Time Polymorphism in Java:
+Compile-Time polymorphism in java is also known as Static Polymorphism. 
+In this process, the call to the method is resolved at compile-time. Compile-Time polymorphism is achieved through Method Overloading. 
+This type of polymorphism can also be achieved through Operator Overloading. However, Java does not support Operator Overloading.
+
+Method Overloading is when a class has multiple methods with the same name, but the number, types and order of parameters and the return type of the methods are different. Java allows the user freedom to use the same name for various functions as long as it can distinguish between them by the type and number of parameters. 
+
+Example of Compile- Time Polymorphism in java
+We will do addition in java and understand the concept of compile-time polymorphism using subtract() 
+
+package staticPolymorphism; 
+public class Addition 
+{ 
+void sum(int a, int b) 
+{ 
+int c = a+b; 
+System.out.println(“ Addition of two numbers :” +c); } 
+void sum(int a, int b, int e) 
+{ 
+int c = a+b+e; 
+System.out.println(“ Addition of three numbers :” +c); } 
+public static void main(String[] args) 
+{ 
+Addition obj = new Addition(); 
+obj.sum ( 30,90); 
+obj.sum(45, 80, 22); 
+} 
+}
+The output of the program will be: 
+
+Sum of two numbers: 120 
+
+Sum of three numbers: 147 
+
+In this program, the sum() method was overloaded with two types with different parameters. 
+
+This is the basic concept of compile-time polymorphism in java where we can perform various operations by using multiple methods having the same name.
+
+What is Runtime Polymorphism in Java?
+Runtime polymorphism in java is also known as Dynamic Binding or Dynamic Method Dispatch. In this process, the call to an overridden method is resolved dynamically at runtime rather than at compile-time. Runtime polymorphism is achieved through Method Overriding.
+
+Method Overriding is done when a child or a subclass has a method with the same name, parameters and return type as the parent or the superclass, then that function overrides the function in the superclass. In simpler terms, if the subclass provides its definition to a method already present in the superclass, then that function in the base class is said to be overridden.
+
+It should be noted that runtime polymorphism can only be achieved through functions and not data members. 
+
+Overriding is done by using a reference variable of the superclass. Which method to be called is determined based on the object which is being referred to by the reference variable. This is also known as Upcasting.
+
+Upcasting is done when the Parent class’s reference variable refers to the object of the child class. For example:
+class A{} 
+class B extends A{}  
+A a=new B(); //upcasting
+Examples of Runtime Polymorphism in Java
+Example 1:
+
+In this example, we are creating one superclass Animal and three subclasses, Herbivores, Carnivores and Omnivores. 
+Subclasses extend the superclass and override its eat() method. We will call the eat() method by the reference variable of  Parent class, i.e. Animal class. 
+As it refers to the base class object and the base class method overrides the superclass method, the base class method is invoked at runtime. 
+As Java Virtual Machine or the JVM and not the compiler determines method invocation, it is runtime polymorphism.
+
+
+class Animal{  
+  void eat(){
+System.out.println("Animals Eat");
+}  
+}  
+class herbivores extends Animal{  
+  void eat(){
+System.out.println("Herbivores Eat Plants");
+} 
+  }
+class omnivores extends Animal{  
+  void eat(){
+System.out.println("Omnivores Eat Plants and meat");
+} 
+  }
+class carnivores extends Animal{  
+  void eat(){
+System.out.println("Carnivores Eat meat");
+} 
+  }
+class main{
+  public static void main(String args[]){ 
+    Animal A = new Animal();
+    Animal h = new herbivores(); //upcasting  
+    Animal o = new omnivores(); //upcasting  
+    Animal c = new carnivores(); //upcasting  
+    A.eat();
+    h.eat();
+    o.eat();  
+    c.eat();  
+   
+  }  
+}  
+Output:
+
+Animals eat
+Herbivores Eat Plants
+Omnivores Eat Plants and meat
+Carnivores eat meat
+
+Example 2:
+
+In this example, we are creating one superclass Hillstations and three subclasses Manali, Mussoorie, Gulmarg. Subclasses extend the superclass and override its location() and famousfor() method. We will call the location() and famousfor() method by the Parent class’, i.e. Hillstations class. As it refers to the base class object and the base class method ove
+
+class Hillstations{  
+  void location(){
+System.out.println("Location is:");
+}  
+void famousfor(){
+System.out.println("Famous for:");
+}  
+ 
+}  
+class Manali extends Hillstations {  
+  void location(){
+System.out.println("Manali is in Himachal Pradesh");
+}  
+void famousfor(){
+System.out.println("It is Famous for Hadimba Temple and adventure sports");
+}  
+  }
+class Mussoorie extends Hillstations {  
+  void location(){
+System.out.println("Mussoorie is in Uttarakhand");
+}  
+void famousfor(){
+System.out.println("It is Famous for education institutions");
+}  
+  }
+class Gulmarg extends Hillstations {  
+  void location(){
+System.out.println("Gulmarg is in J&amp;K");
+}  
+void famousfor(){
+System.out.println("It is Famous for skiing");
+}  
+  }
+class main{
+  public static void main(String args[]){ 
+    Hillstations A = new Hillstations();
+    Hillstations M = new Manali();
+ 
+    Hillstations Mu = new Mussoorie();
+ 
+    Hillstations G = new Gulmarg();
+ 
+    A.location();
+A.famousfor();
+ 
+M.location();
+M.famousfor();
+ 
+Mu.location();
+Mu.famousfor();
+ 
+G.location();
+G.famousfor();
+  }  
+}  
+Output:
+
+Location is:
+Famous for:
+Manali is in Himachal Pradesh
+It is Famous for Hadimba Temple and adventure sports
+Mussoorie is in Uttarakhand
+It is Famous for education institutions
+Gulmarg is in J&K
+It is Famous for skiing
+
+Example of run-time polymorphism in java
+We will create two classes Car and Innova, Innova class will extend the car class and will override its run() method.
+
+class Car 
+{ 
+void run() 
+ 
+System.out.println(“ running”); 
+} 
+}
+class innova extends Car 
+{ 
+void run(); 
+{ 
+System.out.println(“ running fast at 120km”); 
+} 
+public static void main(String args[]) 
+{ 
+Car c = new innova(); 
+c.run(); 
+} 
+} 
+he output of the following program will be; 
+
+Running fast at 120 km. 
+
+What is Method Overriding in Java?
+Method overriding is defined as a process when the subclass or a child class has the same method as declared in the parent class.
+
+Example of Method Overriding in Java
+class Vehicle{  
+  //defining a method  
+  void run(){System.out.println("Vehicle is moving");}  
+}  
+//Creating a child class  
+class Car2 extends Vehicle{  
+  //defining the same method as in the parent class  
+  void run(){System.out.println("car is running safely");}  
+  
+  public static void main(String args[]){  
+  Car2 obj = new Car2();//creating object  
+  obj.run();//calling method  
+  }  
+}  
+Output:
+
+Car is running safely
+Polymorphism in java can be classified into two types:
+
+Static / Compile-Time Polymorphism
+Dynamic / Runtime Polymorphism
+What is Compile-Time Polymorphism in Java?
+Compile-Time polymorphism in java is also known as Static Polymorphism. In this process, the call to the method is resolved at compile-time. Compile-Time polymorphism is achieved through Method Overloading. This type of polymorphism can also be achieved through Operator Overloading. However, Java does not support Operator Overloading.
+
+Method Overloading is when a class has multiple methods with the same name, but the number, types and order of parameters and the return type of the methods are different. Java allows the user freedom to use the same name for various functions as long as it can distinguish between them by the type and number of parameters. 
+
+Example of Compile- Time Polymorphism in java
+We will do addition in java and understand the concept of compile-time polymorphism using subtract() 
+
+package staticPolymorphism; 
+public class Addition 
+{ 
+void sum(int a, int b) 
+{ 
+int c = a+b; 
+System.out.println(“ Addition of two numbers :” +c); } 
+void sum(int a, int b, int e) 
+{ 
+int c = a+b+e; 
+System.out.println(“ Addition of three numbers :” +c); } 
+public static void main(String[] args) 
+{ 
+Addition obj = new Addition(); 
+obj.sum ( 30,90); 
+obj.sum(45, 80, 22); 
+} 
+}
+The output of the program will be: 
+
+Sum of two numbers: 120 
+
+Sum of three numbers: 147 
+
+In this program, the sum() method was overloaded with two types with different parameters. 
+
+This is the basic concept of compile-time polymorphism in java where we can perform various operations by using multiple methods having the same name.
+
+What is Runtime Polymorphism in Java?
+Runtime polymorphism in java is also known as Dynamic Binding or Dynamic Method Dispatch. In this process, the call to an overridden method is resolved dynamically at runtime rather than at compile-time. Runtime polymorphism is achieved through Method Overriding.
+
+Method Overriding is done when a child or a subclass has a method with the same name, parameters and return type as the parent or the superclass, then that function overrides the function in the superclass. In simpler terms, if the subclass provides its definition to a method already present in the superclass, then that function in the base class is said to be overridden.
+
+It should be noted that runtime polymorphism can only be achieved through functions and not data members. 
+
+Overriding is done by using a reference variable of the superclass. Which method to be called is determined based on the object which is being referred to by the reference variable. This is also known as Upcasting.
+
+Upcasting is done when the Parent class’s reference variable refers to the object of the child class. For example:
+
+1
+2
+3
+class A{} 
+class B extends A{}  
+A a=new B(); //upcasting
+Examples of Runtime Polymorphism in Java
+Example 1:
+class Animal{  
+  void eat(){
+System.out.println("Animals Eat");
+}  
+}  
+class herbivores extends Animal{  
+  void eat(){
+System.out.println("Herbivores Eat Plants");
+} 
+  }
+class omnivores extends Animal{  
+  void eat(){
+System.out.println("Omnivores Eat Plants and meat");
+} 
+  }
+class carnivores extends Animal{  
+  void eat(){
+System.out.println("Carnivores Eat meat");
+} 
+  }
+class main{
+  public static void main(String args[]){ 
+    Animal A = new Animal();
+    Animal h = new herbivores(); //upcasting  
+    Animal o = new omnivores(); //upcasting  
+    Animal c = new carnivores(); //upcasting  
+    A.eat();
+    h.eat();
+    o.eat();  
+    c.eat();  
+   
+  }  
+}  
+Output:
+
+Animals eat
+Herbivores Eat Plants
+Omnivores Eat Plants and meat
+Carnivores eat meat
+
+
+
+
+class Hillstations{  
+  void location(){
+System.out.println("Location is:");
+}  
+void famousfor(){
+System.out.println("Famous for:");
+}  
+ 
+}  
+class Manali extends Hillstations {  
+  void location(){
+System.out.println("Manali is in Himachal Pradesh");
+}  
+void famousfor(){
+System.out.println("It is Famous for Hadimba Temple and adventure sports");
+}  
+  }
+class Mussoorie extends Hillstations {  
+  void location(){
+System.out.println("Mussoorie is in Uttarakhand");
+}  
+void famousfor(){
+System.out.println("It is Famous for education institutions");
+}  
+  }
+class Gulmarg extends Hillstations {  
+  void location(){
+System.out.println("Gulmarg is in J&amp;K");
+}  
+void famousfor(){
+System.out.println("It is Famous for skiing");
+}  
+  }
+class main{
+  public static void main(String args[]){ 
+    Hillstations A = new Hillstations();
+    Hillstations M = new Manali();
+ 
+    Hillstations Mu = new Mussoorie();
+ 
+    Hillstations G = new Gulmarg();
+ 
+    A.location();
+A.famousfor();
+ 
+M.location();
+M.famousfor();
+ 
+Mu.location();
+Mu.famousfor();
+ 
+G.location();
+G.famousfor();
+  }  
+}  
+Output:
+
+Location is:
+Famous for:
+Manali is in Himachal Pradesh
+It is Famous for Hadimba Temple and adventure sports
+Mussoorie is in Uttarakhand
+It is Famous for education institutions
+Gulmarg is in J&K
+It is Famous for skiing
+
+Example of run-time polymorphism in java
+We will create two classes Car and Innova, Innova class will extend the car class and will override its run() method.
+
+class Car 
+{ 
+void run() 
+ 
+System.out.println(“ running”); 
+} 
+}
+class innova extends Car 
+{ 
+void run(); 
+{ 
+System.out.println(“ running fast at 120km”); 
+} 
+public static void main(String args[]) 
+{ 
+Car c = new innova(); 
+c.run(); 
+} 
+} 
+he output of the following program will be; 
+
+Running fast at 120 km. 
+
+
+ 
+ 
+
+
+ 
+
