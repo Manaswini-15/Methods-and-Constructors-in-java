@@ -1,0 +1,166 @@
+Examples programs of string handling:
+
+public class StringExample{    
+public static void main(String args[]){    
+String s1="java";//creating string by Java string literal    
+char ch[]='s','t','r','i','n','g','s'};    
+String s2=new String(ch);//converting char array to string    
+String s3=new String("example");//creating Java string by new keyword    
+System.out.println(s1);    
+System.out.println(s2);    
+System.out.println(s3);    
+}}    
+output:
+     java
+     strings
+     example
+     Comparing two strings:
+     
+public class StringCompareEmp{
+   public static void main(String args[]){
+      String str = "Hello World";
+      String anotherString = "hello world";
+      Object objStr = str;
+
+      System.out.println( str.compareTo(anotherString) );
+      System.out.println( str.compareToIgnoreCase(anotherString) );
+      System.out.println( str.compareTo(objStr.toString()));
+   }
+}
+output:
+-32
+0
+0
+String compare by equals():
+This method compares this string to the specified object.
+The result is true if and only if the argument is not null and is a String object that represents the same sequence of characters as this object.
+
+Live Demo
+public class StringCompareequl{
+   public static void main(String []args){
+      String s1 = "tutorialspoint";
+      String s2 = "tutorialspoint";
+      String s3 = new String ("Tutorials Point");
+      System.out.println(s1.equals(s2));
+      System.out.println(s2.equals(s3));
+   }
+}
+output:
+true 
+false 
+
+
+
+String compare by == operator
+Live Demo
+public class StringCompareequl{
+   public static void main(String []args){
+      String s1 = "tutorialspoint";
+      String s2 = "tutorialspoint";
+      String s3 = new String ("Tutorials Point");
+      System.out.println(s1 == s2);
+      System.out.println(s2 == s3);
+   }
+}
+The above code sample will produce the following result.
+
+true
+false 
+
+String Reverse:
+public class StringReverseExample{
+   public static void main(String[] args) {
+      String string = "abcdef";
+      String reverse = new StringBuffer(string).reverse().toString();
+      System.out.println("\nString before reverse: "+string);
+      System.out.println("String after reverse: "+reverse);
+   }
+}
+Output:
+String before reverse:abcdef
+String after reverse:fedcba
+
+Example
+Reverse a string:
+import java.io.*;
+import java.util.*;
+
+public class HelloWorld {
+   public static void main(String[] args) {
+      String input = "tutorialspoint";
+      char[] try1 = input.toCharArray();
+      for (int i = try1.length-1;i >= 0; i--) System.out.print(try1[i]);
+   }
+}
+The above code sample will produce the following result.
+
+tniopslairotut 
+public class SearchStringEmp{
+   public static void main(String[] args) {
+      String strOrig = "Hello readers";
+      int intIndex = strOrig.indexOf("Hello");
+      
+      if(intIndex == - 1) {
+         System.out.println("Hello not found");
+      } else {
+         System.out.println("Found Hello at index " + intIndex);
+      }
+   }
+}
+Result
+The above code sample will produce the following result.
+
+Found Hello at index 0
+This example shows how we can search a word within a String object
+
+Live Demo
+public class HelloWorld {
+   public static void main(String[] args) {
+      String text = "The cat is on the table";
+      System.out.print(text.contains("the"));
+   }
+}
+Result
+The above code sample will produce the following result.
+
+true
+
+Search a string:
+public class SearchStringEmp{
+   public static void main(String[] args) {
+      String strOrig = "Hello readers";
+      int intIndex = strOrig.indexOf("Hello");
+      
+      if(intIndex == - 1) {
+         System.out.println("Hello not found");
+      } else {
+         System.out.println("Found Hello at index " + intIndex);
+      }
+   }
+}
+Result
+The above code sample will produce the following result.
+
+Found Hello at index 0
+This example shows how we can search a word within a String object
+
+Live Demo
+public class HelloWorld {
+   public static void main(String[] args) {
+      String text = "The cat is on the table";
+      System.out.print(text.contains("the"));
+   }
+}
+output:
+true
+concatenating a string:
+
+public class StringDemo {
+
+   public static void main(String args[]) {
+      String string1 = "saw I was ";
+      System.out.println("Dot " + string1 + "Tod");
+   }
+}
+Output:
+Dot saw I was Tod
